@@ -1,9 +1,11 @@
 version: '2'
+
 services:
+
     phpfarm:
         image: splitbrain/phpfarm:wheezy
-        volumes:
-            - ./data:/var/www:rw
+        volumes_from:
+            - app:rw
         ports:
             - "8052:8052"
             - "8053:8053"
@@ -13,6 +15,9 @@ services:
             - "8070:8070"
         environment:
             - APACHE_UID=502
+        depends_on:
+            - mariadb
+
     nginx:
         image: nginx
         volumes:
@@ -24,3 +29,18 @@ services:
         links:
             - phpfarm:phpfarm
         command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+
+    app:
+        image: splitbrain/phpfarm:wheezy
+        volumes:
+            - ./data:/var/www
+
+    mariadb:
+        image: mariadb
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=123456
+            - MYSQL_USER=dev
+            - MYSQL_PASSWORD=123456
+            - MYSQL_DATABASE=myapp
