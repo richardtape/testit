@@ -44,3 +44,11 @@ services:
             - MYSQL_USER=dev
             - MYSQL_PASSWORD=123456
             - MYSQL_DATABASE=myapp
+
+    hub:
+        image: qualiboo/testing-hub
+        ports:
+            - "4444:4444"
+        links:
+            - phpfarm
+            - nginx
