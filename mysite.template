@@ -2,7 +2,7 @@ server {
     listen ${NGINX_PORT};
 	index index.php index.html index.htm;
     server_name 52.spaces.dev;
-    location ~ \.(hh|php|htm|html)$ {
+    location / {
         proxy_pass http://phpfarm_52;
     }
     root /var/www;
@@ -12,7 +12,7 @@ server {
     listen ${NGINX_PORT};
 	index index.php index.html index.htm;
     server_name 53.spaces.dev;
-    location ~ \.(hh|php|htm|html)$ {
+    location / {
         proxy_pass http://phpfarm_53;
     }
     root /var/www;
@@ -22,7 +22,7 @@ server {
     listen ${NGINX_PORT};
 	index index.php index.html index.htm;
     server_name 54.spaces.dev;
-    location ~ \.(hh|php|htm|html)$ {
+    location / {
         proxy_pass http://phpfarm_54;
     }
     root /var/www;
@@ -32,7 +32,7 @@ server {
     listen ${NGINX_PORT};
 	index index.php index.html index.htm;
     server_name 55.spaces.dev;
-    location ~ \.(hh|php|htm|html)$ {
+    location / {
         proxy_pass http://phpfarm_55;
     }
     root /var/www;
@@ -42,7 +42,7 @@ server {
     listen ${NGINX_PORT};
 	index index.php index.html index.htm;
     server_name 56.spaces.dev;
-    location ~ \.(hh|php|htm|html)$ {
+    location / {
         proxy_pass http://phpfarm_56;
     }
     root /var/www;
@@ -52,7 +52,7 @@ server {
     listen ${NGINX_PORT};
 	index index.php index.html index.htm;
     server_name 70.spaces.dev;
-    location ~ \.(hh|php|htm|html)$ {
+    location / {
         proxy_pass http://phpfarm_70;
     }
     root /var/www;
