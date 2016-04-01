@@ -81,3 +81,17 @@ upstream phpfarm_56{
 upstream phpfarm_70{
     server phpfarm:8070;
 }
+
+server {
+    listen ${NGINX_PORT};
+    index index.php index.html index.htm;
+    root /var/www;
+    server_name phpmyadmin.spaces.dev;
+    location / {
+        proxy_pass http://phpmyadmin;
+    }
+}
+
+upstream phpmyadmin{
+    server 192.168.99.100:8080;
+}
