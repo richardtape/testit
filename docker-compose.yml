@@ -24,6 +24,8 @@ services:
         image: nginx
         volumes:
             - ./testit.conf:/etc/nginx/conf.d/testit.conf
+        volumes_from:
+            - app:rw
         ports:
             - "80:80"
         environment:
@@ -77,7 +79,7 @@ services:
     app:
         image: splitbrain/phpfarm:wheezy
         volumes:
-            - ./data:/var/www
+            - ./data:/var/www:rw
 
     database:
         image: nginx
